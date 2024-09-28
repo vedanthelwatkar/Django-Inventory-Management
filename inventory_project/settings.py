@@ -14,6 +14,9 @@ from pathlib import Path
 import os,sys
 from datetime import timedelta
 from django.core.cache import cache
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qc^bvfs#3j^b5w@g0_k^!le*tu4x1a-_tvcw*dfu43^nhfs@ly'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,13 +84,24 @@ WSGI_APPLICATION = 'inventory_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'INVENTORY',                    
-        'USER': 'root',                         
-        'PASSWORD': 'vedd2201',       
-        'HOST': 'localhost',                    
-        'PORT': '3306',                         
+        'NAME': os.getenv("DB_NAME"),                    
+        'USER': "root",                         
+        'PASSWORD': os.getenv("PASSWORD"),       
+        'HOST': os.getenv("HOST"),                    
+        'PORT': os.getenv("PORT"),                         
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'INVENTORY',                    
+#         'USER': 'root',                         
+#         'PASSWORD': 'vedd2201',       
+#         'HOST': 'localhost',                    
+#         'PORT': '3306',                         
+#     }
+# }
 
 if 'test' in sys.argv:
     CACHES = {

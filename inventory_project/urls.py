@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from inventory_management.views import item_list, item_detail,register, login
+from inventory_management.views import item_list, item_detail,register,login, home
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('api/register/', register, name='register'),
     path('api/login/', login, name='login'),

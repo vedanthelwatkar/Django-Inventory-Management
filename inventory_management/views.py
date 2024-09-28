@@ -9,8 +9,12 @@ from rest_framework.permissions import AllowAny
 from .serializers import ItemSerializer
 import logging
 from django.contrib.auth import authenticate
+from django.http import HttpResponse
 
 logger = logging.getLogger(__name__)
+
+def home(request):
+    return HttpResponse("Welcome to the homepage!")
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
