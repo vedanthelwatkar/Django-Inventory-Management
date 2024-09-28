@@ -48,6 +48,8 @@ This project is a backend API for a simple Inventory Management System using Dja
 
 ## API Endpoints
 
+- Register : POST `/api/register/`
+- Login : POST `/api/login/`
 - User Registration: POST `/api/register/`
 - Login (Get JWT Token): POST `/api/token/`
 - Refresh Token: POST `/api/token/refresh/`
